@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+
+  db:
+    image: neo4j:5.16.0-community-bullseye
+    restart: always
+    # environment:
+    #   NEO4J_AUTH : neo4j/password #none
+    volumes:
+      - ./neo4j:/data
+    ports:
+      - 7687:7687
+      - 7474:7474
+    expose:
+      - 7687
+      - 7474
+    
