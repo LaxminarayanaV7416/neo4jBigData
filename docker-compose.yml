@@ -15,4 +15,26 @@ services:
     expose:
       - 7687
       - 7474
+    networks:
+      - backend_network
     
+  backend:
+    build:
+      context: ./codeBase
+      dockerfile: Dockerfile
+    restart: always
+    container_name: backend
+    ports:
+      - 5001:5001
+    networks:
+      - backend_network
+    depends_on:
+      - db
+    expose:
+      - 5001
+
+# volumes:
+#   neo4j:
+
+networks:
+  backend_network:
